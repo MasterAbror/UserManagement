@@ -46,6 +46,10 @@ type UserAuth struct {
 	Password string `json:"password" validate:"required"`
 }
 
+type UserAuthorization struct {
+	AccessToken string `json:"access_token" validate:"required"`
+}
+
 type DBResponse struct {
 	ID        primitive.ObjectID `json:"id" bson:"_id"`
 	Name      string             `json:"name" bson:"name"`

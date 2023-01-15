@@ -9,6 +9,7 @@ import (
 func Routes(router *gin.Engine) {
 	router.POST("/user/create", controllers.CreateUser())
 	router.POST("/user/auth", controllers.AuthUser())
+	router.POST("/authorization", helpers.Authorization(), controllers.GetMe())
 	router.GET("/user/read/:userId", helpers.AuthorizationUser(), controllers.GetAUser())
 	router.PUT("/user/update/:userId", helpers.AuthorizationUser(), controllers.EditAUser())
 	router.DELETE("/user/delete/:userId", helpers.AuthorizationUser(), controllers.DeleteAUser())
