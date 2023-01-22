@@ -41,6 +41,6 @@ var DB *mongo.Client = ConnectDB()
 
 // getting database collections
 func GetCollection(client *mongo.Client, collectionName string) *mongo.Collection {
-	collection := client.Database("auth").Collection(collectionName)
+	collection := client.Database("user_management").Collection(collectionName)
 	return collection
 }

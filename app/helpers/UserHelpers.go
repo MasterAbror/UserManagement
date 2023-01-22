@@ -10,18 +10,37 @@ import (
 	"github.com/RadenAbror/UserManagement/app/models"
 	"github.com/gin-gonic/gin"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
+// func FindUserById(id string) (*models.DBResponse, error) {
+// 	oid, _ := primitive.ObjectIDFromHex(id)
+
+// 	var user *models.DBResponse
+// 	var userCollection *mongo.Collection = config.GetCollection(config.DB, "users")
+// 	var ctx context.Context
+
+// 	query := bson.M{"_id": oid}
+// 	err := userCollection.FindOne(ctx, query).Decode(&user)
+
+// 	if err != nil {
+// 		if err == mongo.ErrNoDocuments {
+// 			return &models.DBResponse{}, err
+// 		}
+// 		return nil, err
+// 	}
+
+// 	return user, nil
+// }
+
 func FindUserById(id string) (*models.DBResponse, error) {
-	oid, _ := primitive.ObjectIDFromHex(id)
+	oid := id
 
 	var user *models.DBResponse
 	var userCollection *mongo.Collection = config.GetCollection(config.DB, "users")
 	var ctx context.Context
 
-	query := bson.M{"_id": oid}
+	query := bson.M{"id": oid}
 	err := userCollection.FindOne(ctx, query).Decode(&user)
 
 	if err != nil {
